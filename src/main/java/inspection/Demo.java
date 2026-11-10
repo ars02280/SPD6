@@ -34,9 +34,10 @@ public class Demo {
         ProjectStatisticsVisitor stats = new ProjectStatisticsVisitor();
         QualityGateVisitor gate = new QualityGateVisitor();
         ComplianceVisitor compliance = new ComplianceVisitor();
+        TechnicalDebtVisitor debt = new TechnicalDebtVisitor();
 
         // the same structure, four different operations
-        for (ProjectVisitor v : List.<ProjectVisitor>of(security, stats, gate, compliance)) {
+        for (ProjectVisitor v : List.<ProjectVisitor>of(security, stats, gate, compliance, debt)) {
             project.accept(v);
         }
 
@@ -44,5 +45,6 @@ public class Demo {
         System.out.println(stats.report());
         System.out.println(gate.report());
         System.out.println(compliance.report());
+        System.out.println(debt.report());
     }
 }
